@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function new_instance_of(leftVaule, rightVaule) {
+            let rightProto = rightVaule.prototype; // 取右表达式的 prototype 值
+            leftVaule = leftVaule.__proto__; // 取左表达式的__proto__值
+            while (true) {
+                if (leftVaule === null) {
+                    return false;
+                }
+                if (leftVaule === rightProto) {
+                    return true;
+                }
+
+                //效果都一样
+                // leftVaule = leftVaule.__proto__
+                rightVaule=rightVaule.__proto__
+            }
+        }
+
+        let person = function () {
+
+        }
+        let no = new person()
+       console.log(no instanceof person) //true
+       console.log(new_instance_of(no,person)) //true
+    </script>
+</body>
+
+</html>
